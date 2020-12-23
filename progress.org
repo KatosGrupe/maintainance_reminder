@@ -1,0 +1,39 @@
+#+TITLE: maintenance_reminder
+#+OPTIONS: toc:nil p:t
+
+* Aprašymas
+Programa paleidžiama kiekvienam ekrane.
+Tai .exe tipo programa su web server interface kuris pasiekimas per web'ą,
+jei bus noro valdyti iš centrinio taško ateity.
+Programa konfiguruojama per .toml pateiktą failą šalia .exe
+https://en.wikipedia.org/wiki/TOML
+Toml konfiguracija skirta valdyti Port'ui, listening IP ir email konfiguracijai.
+
+Ekranų stebėjimas valdomas per Web Interface arba API.
+Pati user-configuration dalis saugojama Sqlite duomenų bazėje, dėl nenutrūkstamo veikimo.
+* Darbų planas
+** TODO Toml failo configuracinis nuskaitymas
+DEADLINE: <2020-12-29 Tue>
+:LOGBOOK:
+- State "TODO"       from              [2020-12-23 Wed 09:07]
+:END:
+** TODO Failų sistemos duomenų bazė ACID veikimui (Greičiausiai sqlite)
+DEADLINE: <2021-01-06 Wed>
+:LOGBOOK:
+- State "TODO"       from              [2020-12-23 Wed 09:07]
+:END:
+** TODO Laiko sekimas pagal sisteminį laiką
+DEADLINE: <2021-01-11 Mon>
+:LOGBOOK:
+- State "TODO"       from              [2020-12-23 Wed 09:08]
+:END:
+** TODO Email'ų proxy veikimas programoje
+DEADLINE: <2021-01-14 Thu>
+:LOGBOOK:
+- State "TODO"       from              [2020-12-23 Wed 09:08]
+:END:
+** TODO Web serverio pakūrimas kaip interface programai
+DEADLINE: <2021-01-26 Tue>
+:LOGBOOK:
+- State "TODO"       from              [2020-12-23 Wed 09:08]
+:END:
