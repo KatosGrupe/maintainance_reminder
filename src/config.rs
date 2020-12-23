@@ -36,7 +36,7 @@ impl Config {
 mod tests {
     use super::*;
     #[test]
-    fn it_works() {
+    fn can_read_default_toml_config() {
         let config = Config::load();
         assert_eq!(config.server.port, 21904);
         assert_eq!(config.server.listen, "127.0.0.1");
