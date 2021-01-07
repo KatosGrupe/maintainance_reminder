@@ -42,7 +42,7 @@ impl Repetition {
 
         match re.captures(value) {
             Some(cap) => {
-                let mut count: i32 = match FromStr::from_str(&cap[2]) {
+                let count: i32 = match FromStr::from_str(&cap[2]) {
                     Ok(result) => result,
                     Err(_) => {
                         error!("({}) could not be converted into number, the program might not track correctly",
