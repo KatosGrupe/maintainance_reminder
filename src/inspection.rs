@@ -47,7 +47,7 @@ impl Repetition {
                     Err(_) => {
                         error!("({}) could not be converted into number, the program might not track correctly",
                                &cap[2]);
-                        0
+                        return Err(ParseError::IncorrectTimeCount);
                     }
                 };
                 let repetition = Repetition {
@@ -75,7 +75,7 @@ impl Repetition {
                                 "({}) could not be parsed, acceptable values (Y, M, D, W, h, m, s)",
                                 &cap[3]
                             );
-                            count
+                            return Err(ParseError::IncorrectTimeMultiplier);
                         }
                     },
                 };
