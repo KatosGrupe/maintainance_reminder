@@ -3,5 +3,6 @@ listen = "127.0.0.1"
 port = 21904
 
 [email]
+name = "SomeName"
 username = "test@test.org"
 password = "SecurePassword1"
