@@ -192,6 +192,7 @@ dependencies = [
  "chrono",
  "lettre",
  "log",
+ "native-tls",
  "regex",
  "serde",
  "simplelog",

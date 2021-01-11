@@ -10,6 +10,7 @@ edition = "2018"
 chrono = "0.4.19"
 lettre = ""
 log = "0.4.11"
+native-tls = ""
 regex = "1.4.2"
 serde = {version = "1.0.1", features = ["derive"]}
 simplelog = "0.9.0"

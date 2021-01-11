@@ -10,7 +10,8 @@ pub struct InspectionDate {
 }
 
 impl InspectionDate {
-    pub fn next_time() -> Date<Utc> {
+    pub fn next_time(&self) -> Date<Utc> {
+        // Date::now() - self.date
         todo!()
     }
 }

@@ -5,6 +5,7 @@ extern crate simplelog;
 mod config;
 mod database;
 mod inspection;
+mod mail;
 
 use crate::database::Database;
 use chrono::DateTime;
@@ -12,6 +13,13 @@ use chrono::FixedOffset;
 use chrono::Utc;
 use config::Config;
 use inspection::Repetition;
+use lettre::smtp::authentication::{Credentials, Mechanism};
+use lettre::smtp::ConnectionReuseParameters;
+use lettre::{
+    ClientSecurity, ClientTlsParameters, EmailAddress, Envelope, Message, SendableEmail,
+    SmtpClient, Transport,
+};
+use native_tls::{Protocol, TlsConnector};
 use simplelog::*;
 
 fn main() {
@@ -39,6 +47,26 @@ fn main() {
         inspections[0].date - utc.with_timezone(&FixedOffset::east(2 * 3600))
     );
 
+    let mut smtp_client = mail::SmtpClient::connect(config.email);
+    smtp_client
+        .send_email(
+            "Priminimas priežiūros darbams",
+            "Reikia perdažyti stulpą",
+            vec![EmailAddress::new("ignas@kata.lt".to_string()).unwrap()],
+            EmailAddress::new("ignas@kata.lt".to_string()).unwrap(),
+        )
+        .unwrap();
+
+    // println!("{:#?}", result);
+
+    // let mut tls_builder = TlsConnector::builder();
+    // tls_builder.min_protocol_version(Some(Protocol::Tlsv10));
+    // let tls_parameters = ClientTlsParameters::new("smtp.example.com".to_string(),
+    // tls_builder.build().unwrap())
+
+    // let mut mailer = SmtpClient::new((config.email.server.address, config.email.server.port))
+
+    // let client = lettre::smtp::client::new_simple("kata.lt").credentials()
     //(zabbix should only check if program exists to verify it working correctly)
     //control through web gui
     //send email

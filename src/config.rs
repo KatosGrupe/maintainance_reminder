@@ -3,7 +3,7 @@ use serde::Deserialize;
 #[derive(Deserialize)]
 pub struct Config {
     server: ServerConfig,
-    email: EmailConfig,
+    pub email: EmailConfig,
 }
 
 #[derive(Deserialize)]
@@ -14,9 +14,11 @@ pub struct ServerConfig {
 
 #[derive(Deserialize)]
 pub struct EmailConfig {
-    name: String,
-    username: String,
-    password: String,
+    pub name: String,
+    pub username: String,
+    pub password: String,
+    pub port: u16,
+    pub server: String,
 }
 
 impl Config {
@@ -44,5 +46,7 @@ mod tests {
         assert_eq!(config.email.username, "test@test.org");
         assert_eq!(config.email.password, "SecurePassword1");
         assert_eq!(config.email.name, "SomeName");
+        assert_eq!(config.email.server, "127.0.0.1");
+        assert_eq!(config.email.port, 25)
     }
 }
