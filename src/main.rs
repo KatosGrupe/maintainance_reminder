@@ -1,7 +1,12 @@
+#![feature(proc_macro_hygiene, decl_macro)]
+
 #[macro_use]
 extern crate log;
+#[macro_use]
+extern crate rocket;
 extern crate simplelog;
 
+mod client;
 mod config;
 mod database;
 mod inspection;
@@ -71,4 +76,5 @@ fn main() {
     //control through web gui
     //send email
     println!("Hello, world!");
+    rocket::ignite().mount("/", routes![client::index]).launch();
 }
