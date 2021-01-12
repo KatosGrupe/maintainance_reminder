@@ -4,7 +4,7 @@ port = 21904
 
 [email]
 server = "mail.server.org"
-port = "25"
+port = 25
 name = "SomeName"
 username = "test@test.org"
 password = "SecurePassword1"
