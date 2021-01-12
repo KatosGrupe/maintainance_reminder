@@ -42,7 +42,7 @@ impl SmtpClient {
         body: &str,
         to: Vec<EmailAddress>,
         from: EmailAddress,
-    ) -> std::result::Result<lettre::smtp::response::Response, lettre::smtp::error::Error> {
+    ) -> Result<Response, lettre::smtp::error::Error> {
         let email = SendableEmail::new(
             Envelope::new(
                 Some(from), //from
