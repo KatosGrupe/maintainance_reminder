@@ -1,0 +1,9 @@
+{% extends "base" %}
+
+{% block content %}
+<h3>Inspection: {{name}}</h3>
+Repetition: {{repetition}}<br>
+Last check-in date: {{last_confirmation_time}}<br>
+Due in: {{due_date}}<br>
+<button> SET DONE! </button>
+{% endblock content %}

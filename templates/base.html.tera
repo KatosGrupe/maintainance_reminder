@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Maintenance tracker</title>
+    <style>
+      body {
+          margin: auto;
+          width: 600px;
+          border: 3px;
+          padding: 10px;
+          background-color: HoneyDew;
+      }
+      </style>
+    {% block header %}
+    {% endblock header %}
+</head>
+
+<body>
+  {% block content %}
+  {% endblock content %}
+</body>
+
+</html>

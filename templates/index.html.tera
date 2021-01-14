@@ -1,0 +1,11 @@
+{% extends "base" %}
+
+{% block content %}
+<h3>Next maintenance:</h3>
+
+<ul>
+  {% for inspection in inspections %}
+    <li><a href="inspection/{{ inspection.name }}"> {{ inspection.name }}</a> ({{inspection.duedate}})</li>
+  {% endfor %}
+</ul> 
+{% endblock content %}

@@ -1,18 +1,21 @@
 use chrono::prelude::*;
 use chrono::Date;
+use chrono::Duration;
+use serde::Serialize;
 use std::str::FromStr;
 
 #[derive(Debug)]
 pub struct InspectionDate {
     pub id: i64,
+    pub name: String,
     pub repetition: Repetition,
     pub date: DateTime<FixedOffset>,
 }
 
 impl InspectionDate {
-    pub fn next_time(&self) -> Date<Utc> {
-        // Date::now() - self.date
-        todo!()
+    pub fn next_time(&self) -> chrono::Duration {
+        self.date + self.repetition.duration()
+            - Utc::now().with_timezone(&FixedOffset::east(2 * 3600))
     }
 }
 
@@ -90,5 +93,19 @@ impl Repetition {
                 return Err(ParseError::RegexNotMatched);
             }
         }
+    }
+
+    pub fn to_string(&self) -> String {
+        format!(
+            "{} d. {} hours {} min {} sec",
+            self.seconds / (60 * 60 * 24),      //days
+            self.seconds % (60 * 60 * 24) / 24, //hours
+            self.seconds % (60 * 60) / 60,      //minutes
+            self.seconds % 60                   //seconds
+        )
+    }
+
+    pub fn duration(&self) -> Duration {
+        Duration::seconds(self.seconds.into())
     }
 }

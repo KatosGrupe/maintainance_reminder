@@ -25,6 +25,7 @@ use lettre::{
     SmtpClient, Transport,
 };
 use native_tls::{Protocol, TlsConnector};
+use rocket_contrib::templates::Template;
 use simplelog::*;
 
 fn main() {
@@ -52,15 +53,15 @@ fn main() {
         inspections[0].date - utc.with_timezone(&FixedOffset::east(2 * 3600))
     );
 
-    let mut smtp_client = mail::SmtpClient::connect(config.email);
-    smtp_client
-        .send_email(
-            "Priminimas priežiūros darbams",
-            "Reikia perdažyti stulpą",
-            vec![EmailAddress::new("ignas@kata.lt".to_string()).unwrap()],
-            EmailAddress::new("ignas@kata.lt".to_string()).unwrap(),
-        )
-        .unwrap();
+    // let mut smtp_client = mail::SmtpClient::connect(config.email);
+    // smtp_client
+    //     .send_email(
+    //         "Priminimas priežiūros darbams",
+    //         "Reikia perdažyti stulpą",
+    //         vec![EmailAddress::new("ignas@kata.lt".to_string()).unwrap()],
+    //         EmailAddress::new("ignas@kata.lt".to_string()).unwrap(),
+    //     )
+    //     .unwrap();
 
     // println!("{:#?}", result);
 
@@ -75,6 +76,8 @@ fn main() {
     //(zabbix should only check if program exists to verify it working correctly)
     //control through web gui
     //send email
-    println!("Hello, world!");
-    rocket::ignite().mount("/", routes![client::index]).launch();
+    rocket::ignite()
+        .attach(Template::fairing())
+        .mount("/", routes![client::index, client::edit])
+        .launch();
 }
