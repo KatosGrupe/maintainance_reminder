@@ -1,4 +1,3 @@
-use crate::inspection::InspectionDate;
 use crate::Database;
 use rocket_contrib::templates::Template;
 use serde::Serialize;
@@ -21,7 +20,7 @@ pub fn index(db: Database) -> Template {
         .iter()
         .map(|i| ViewReadyInspection {
             name: i.name.clone(),
-            duedate: "todo".to_string(),
+            duedate: format_duration(i.next_time()),
         })
         .collect::<Vec<ViewReadyInspection>>();
 

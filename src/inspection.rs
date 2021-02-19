@@ -1,7 +1,5 @@
 use chrono::prelude::*;
-use chrono::Date;
 use chrono::Duration;
-use serde::Serialize;
 use std::str::FromStr;
 
 #[derive(Debug)]
@@ -77,7 +75,7 @@ impl Repetition {
                         other => {
                             error!(
                                 "({}) could not be parsed, acceptable values (Y, M, D, W, h, m, s)",
-                                &cap[3]
+                                other
                             );
                             return Err(ParseError::IncorrectTimeMultiplier);
                         }

@@ -1,7 +1,6 @@
 use crate::inspection::InspectionDate;
 use crate::Repetition;
 use chrono::DateTime;
-use chrono::Utc;
 use rocket::request::FromRequest;
 use rocket::Outcome;
 
