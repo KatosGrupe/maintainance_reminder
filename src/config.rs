@@ -46,7 +46,7 @@ mod tests {
         assert_eq!(config.email.username, "test@test.org");
         assert_eq!(config.email.password, "SecurePassword1");
         assert_eq!(config.email.name, "SomeName");
-        assert_eq!(config.email.server, "127.0.0.1");
+        assert_eq!(config.email.server, "mail.server.org");
         assert_eq!(config.email.port, 25)
     }
 }
